@@ -10,14 +10,14 @@ public class UserAccount {
 	private String imagePath;
 	private String browser;
 	
-	public UserAccount(String username, String password, int indexGender, String career, String birthday, String imagePath, String browser) {
-		this.username = username;
-		this.password = password;
-		gender = genders[indexGender].toString();
-		this.browser = browser;
-		this.career = career;
-		this.birthday = birthday;
-		this.imagePath = imagePath;
+	public UserAccount(String pusername, String ppassword, int pindexGender, String pcareer, String pbirthday, String pimagePath, String pbrowser) {
+		username = pusername;
+		password = ppassword;
+		gender = genders[pindexGender].name();
+		browser = pbrowser;
+		career = pcareer;
+		birthday = pbirthday;
+		imagePath = pimagePath;
 	}
 	
 	public String getUsername() {

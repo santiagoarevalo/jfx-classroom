@@ -3,7 +3,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -167,27 +166,21 @@ public class ClassroomGUI {
 		registerPane.getChildren().setAll(login);
     }
     
-    public boolean checkLogIn() throws IOException {
-    	boolean logged = false;
-    		for(int i=0; i<classroom.getUserAccounts().size(); i++) {
-        		if(txtUsername.getText().equals(classroom.getUserAccounts().get(i).getUsername()) && pwPassword.getText().equals(classroom.getUserAccounts().get(i).getPassword())) {
-        			logged = true;
-        		}
-        		else {
-        			Alert alert = new Alert(AlertType.ERROR);
-        	    	alert.setTitle("Log In incorrect");
-        	    	alert.setHeaderText(null);
-        	    	alert.setContentText("The username or password given are incorrect");
-        	    	alert.showAndWait();
-        		}
-        	}
-    	return logged;	
+    @FXML
+    public void LogOut(ActionEvent event) throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
+		
+		fxmlLoader.setController(this);    	
+		Parent login = fxmlLoader.load();
+    	
+		listPane.getChildren().clear();
+		listPane.getChildren().setAll(login);
     }
     
-    @FXML
-    public void loadUserAccountList(ActionEvent event) throws IOException {
+    public boolean checkLogIn() throws IOException {
+    	boolean logged = false;
     	try {
-	    	if(classroom.getUserAccounts() == null) {
+	    	if(classroom.getUserAccounts().size() == 0) {
 	    		Alert alert = new Alert(AlertType.ERROR);
 		    	alert.setTitle("Log In incorrect");
 		    	alert.setHeaderText(null);
@@ -195,22 +188,18 @@ public class ClassroomGUI {
 		    	alert.showAndWait();
 	    	}
 	    	else {
-		    	if(checkLogIn() == true) {
-					FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("account-list.fxml"));
-					
-					fxmlLoader.setController(this);
-					Parent UserAccountListPane = fxmlLoader.load();
-			    	
-					loginPane.getChildren().clear();
-					loginPane.getChildren().addAll(UserAccountListPane);
-					
-					lbUsername.setText(txtUsername.getText());
-					
-					InputStream stream = new FileInputStream(txtDirectoryImage.getText());
-					Image image = new Image(stream);
-					imageProfile.setImage(image);
-			    	initializeTableView();
-				}
+	    		for(int i=0; i<classroom.getUserAccounts().size(); i++) {
+	        		if(txtUsername.getText().equals(classroom.getUserAccounts().get(i).getUsername()) && pwPassword.getText().equals(classroom.getUserAccounts().get(i).getPassword())) {
+	        			logged = true;
+	        		}
+	        		else {
+	        			Alert alert = new Alert(AlertType.ERROR);
+	        	    	alert.setTitle("Log In incorrect");
+	        	    	alert.setHeaderText(null);
+	        	    	alert.setContentText("The username or password given are incorrect");
+	        	    	alert.showAndWait();
+	        		}
+	        	}
 	    	}
     	} catch(NullPointerException npe) {
     		Alert alert = new Alert(AlertType.ERROR);
@@ -219,6 +208,27 @@ public class ClassroomGUI {
 	    	alert.setContentText("The username or password given are incorrect");
 	    	alert.showAndWait();
     	}
+    	return logged;	
+    }
+    
+    @FXML
+    public void loadUserAccountList(ActionEvent event) throws IOException {
+    	if(checkLogIn() == true) {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("account-list.fxml"));
+			
+			fxmlLoader.setController(this);
+			Parent UserAccountListPane = fxmlLoader.load();
+	    	
+			loginPane.getChildren().clear();
+			loginPane.getChildren().addAll(UserAccountListPane);
+			
+			lbUsername.setText(txtUsername.getText());
+			
+			InputStream stream = new FileInputStream(txtDirectoryImage.getText());
+			Image image = new Image(stream);
+			imageProfile.setImage(image);
+	    	initializeTableView();
+		}
     }
     
     public void loadBrowser(ActionEvent event) throws IOException {
@@ -231,7 +241,6 @@ public class ClassroomGUI {
     }
     
     public void addUserAccount(ActionEvent event) throws IOException {
-    	int indexGender = 0;
     	if(txtfieldUsername.getText().isEmpty() || txtfieldPassword.getText().isEmpty() || (rbtMale.isSelected() == false && rbtFemale.isSelected() == false && rbtOther.isSelected() == false) || (checkSoftWare.isSelected() == false && checkTelematic.isSelected() == false && checkIndustrial.isSelected() == false) || dateBirthday.getValue().toString().equals(null)) {
     		Alert alert = new Alert(AlertType.ERROR);
 	    	alert.setTitle("Validation Error");
@@ -240,6 +249,10 @@ public class ClassroomGUI {
 	    	alert.showAndWait();
     	}
     	else {
+    		String username = txtfieldUsername.getText();
+    		String password = txtfieldPassword.getText();
+    		
+    		int indexGender = 0;
 	    	if(rbtFemale.isArmed() == true) {
 	    		indexGender = 1;
 	    	}
@@ -258,19 +271,10 @@ public class ClassroomGUI {
 				careers += checkIndustrial.getText()+"/n";
 			}
 	    	String birthdayDate = dateBirthday.getValue().toString();
-	    	System.out.println(birthdayDate);
+	    	String imagePath = txtDirectoryImage.getText();
 	    	String browser = (String)choiceBrowser.getValue();
 	    	
-	    	//add userAccount in the model
-	    	try {
-	    		classroom.addUserAcount(txtfieldUsername.getText(),txtfieldPassword.getText(), indexGender, careers, birthdayDate, txtDirectoryImage.getText(), browser);
-	    	} catch(NullPointerException npe) {
-	    		Alert alert = new Alert(AlertType.ERROR);
-		    	alert.setTitle("Account not created");
-		    	alert.setHeaderText(null);
-		    	alert.setContentText("The new account has not been created");
-		    	alert.showAndWait();
-	    	}
+	    	classroom.addUserAcount(username, password, indexGender, careers, birthdayDate, imagePath, browser);
 	    	//clean the fields in the GUI
 	    	txtfieldUsername.setText("");
 	    	txtfieldPassword.setText("");
