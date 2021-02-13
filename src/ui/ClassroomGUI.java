@@ -121,8 +121,8 @@ public class ClassroomGUI {
     
     private Classroom classroom;
     
-    public ClassroomGUI(Classroom croom) {
-    	classroom = croom;
+    public ClassroomGUI(Classroom classroom) {
+    	this.classroom = classroom;
     }
     
     public void initialize() {
@@ -281,19 +281,27 @@ public class ClassroomGUI {
 	    	String birthdayDate = dateBirthday.getValue().toString();
 	    	String imagePath = txtDirectoryImage.getText();
 	    	String browser = (String)choiceBrowser.getValue();
-	    	
-	    	classroom.addUserAcount(username, password, indexGender, careers, birthdayDate, imagePath, browser);
-	    	//clean the fields in the GUI
-	    	txtfieldUsername.setText("");
-	    	txtfieldPassword.setText("");
-	    	
-	    	//show the success message
-	    	Alert alert = new Alert(AlertType.INFORMATION);
-	    	alert.setTitle("Account created");
-	    	alert.setHeaderText(null);
-	    	alert.setContentText("The new account has been created succesfully");
-	
-	    	alert.showAndWait();
+	   
+	    	if(classroom != null && classroom.addUserAcount(username, password, indexGender, careers, birthdayDate, imagePath, browser)) {
+	    		//clean the fields in the GUI
+		    	txtfieldUsername.setText("");
+		    	txtfieldPassword.setText("");
+		    	
+		    	//show the success message
+		    	Alert alert = new Alert(AlertType.INFORMATION);
+		    	alert.setTitle("Account created");
+		    	alert.setHeaderText(null);
+		    	alert.setContentText("The new account has been created succesfully");
+		
+		    	alert.showAndWait();
+	    	}
+	    	else {
+	    		Alert alert = new Alert(AlertType.ERROR);
+		    	alert.setTitle("Sign Up incorrect");
+		    	alert.setHeaderText(null);
+		    	alert.setContentText("The user account can not be created, NullPointerException");
+		    	alert.showAndWait();
+	    	}
     	}
     }
 }

@@ -11,81 +11,81 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="registerPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="421.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="registerPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="491.0" prefWidth="617.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="153.0" layoutY="36.0" text="Join in to Classroom">
+      <Label layoutX="259.0" layoutY="36.0" text="Join in to Classroom">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="125.0" layoutY="55.0" text="Create your account">
+      <Label layoutX="232.0" layoutY="55.0" text="Create your account">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="68.0" layoutY="105.0" text="Username:">
+      <Label layoutX="168.0" layoutY="105.0" text="Username:">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="70.0" layoutY="143.0" text="Password:">
+      <Label layoutX="170.0" layoutY="143.0" text="Password:">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="38.0" layoutY="178.0" text="Profile photo:">
+      <Label layoutX="147.0" layoutY="178.0" text="Profile photo:">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="77.0" layoutY="210.0" text="Gender:">
+      <Label layoutX="177.0" layoutY="210.0" text="Gender:">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtfieldUsername" layoutX="150.0" layoutY="103.0" prefHeight="25.0" prefWidth="159.0" />
-      <TextField fx:id="txtfieldPassword" layoutX="150.0" layoutY="141.0" prefHeight="25.0" prefWidth="159.0" />
-      <TextField fx:id="txtDirectoryImage" editable="false" layoutX="138.0" layoutY="176.0" prefHeight="25.0" prefWidth="159.0" />
-      <Button layoutX="303.0" layoutY="176.0" mnemonicParsing="false" onAction="#loadBrowser" style="-fx-background-color: blue;" text="Browser" textAlignment="CENTER" textFill="WHITE">
+      <TextField fx:id="txtfieldUsername" layoutX="262.0" layoutY="103.0" prefHeight="25.0" prefWidth="159.0" />
+      <TextField fx:id="txtfieldPassword" layoutX="262.0" layoutY="141.0" prefHeight="25.0" prefWidth="159.0" />
+      <TextField fx:id="txtDirectoryImage" editable="false" layoutX="262.0" layoutY="176.0" prefHeight="25.0" prefWidth="159.0" />
+      <Button layoutX="440.0" layoutY="176.0" mnemonicParsing="false" onAction="#loadBrowser" style="-fx-background-color: blue;" text="Browser" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <RadioButton fx:id="rbtMale" layoutX="137.0" layoutY="212.0" mnemonicParsing="false" text="Male">
+      <RadioButton fx:id="rbtMale" layoutX="253.0" layoutY="212.0" mnemonicParsing="false" text="Male">
          <toggleGroup>
             <ToggleGroup fx:id="rbttGender" />
          </toggleGroup></RadioButton>
-      <RadioButton fx:id="rbtFemale" layoutX="200.0" layoutY="212.0" mnemonicParsing="false" text="Female" toggleGroup="$rbttGender" />
-      <RadioButton fx:id="rbtOther" layoutX="271.0" layoutY="212.0" mnemonicParsing="false" text="Other" toggleGroup="$rbttGender" />
-      <Label layoutX="87.0" layoutY="244.0" text="Career:">
+      <RadioButton fx:id="rbtFemale" layoutX="312.0" layoutY="212.0" mnemonicParsing="false" text="Female" toggleGroup="$rbttGender" />
+      <RadioButton fx:id="rbtOther" layoutX="382.0" layoutY="212.0" mnemonicParsing="false" text="Other" toggleGroup="$rbttGender" />
+      <Label layoutX="180.0" layoutY="244.0" text="Career:">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <CheckBox fx:id="checkSoftWare" layoutX="148.0" layoutY="246.0" mnemonicParsing="false" text="Software Engineering" />
-      <CheckBox fx:id="checkTelematic" layoutX="148.0" layoutY="275.0" mnemonicParsing="false" text="Telematic Engineering" />
-      <CheckBox fx:id="checkIndustrial" layoutX="148.0" layoutY="304.0" mnemonicParsing="false" text="Industrial Engineering" />
-      <Label layoutX="74.0" layoutY="341.0" text="Birthday:">
+      <CheckBox fx:id="checkSoftWare" layoutX="259.0" layoutY="246.0" mnemonicParsing="false" text="Software Engineering" />
+      <CheckBox fx:id="checkTelematic" layoutX="262.0" layoutY="275.0" mnemonicParsing="false" text="Telematic Engineering" />
+      <CheckBox fx:id="checkIndustrial" layoutX="263.0" layoutY="304.0" mnemonicParsing="false" text="Industrial Engineering" />
+      <Label layoutX="174.0" layoutY="341.0" text="Birthday:">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <DatePicker fx:id="dateBirthday" layoutX="143.0" layoutY="339.0" />
-      <Label layoutX="67.0" layoutY="381.0" text="Favorite Browser:">
+      <DatePicker fx:id="dateBirthday" layoutX="262.0" layoutY="339.0" />
+      <Label layoutX="147.0" layoutY="381.0" text="Favorite Browser:">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="bttSignIn" layoutX="128.0" layoutY="428.0" mnemonicParsing="false" onAction="#loadLogIn" style="-fx-background-color: blue;" text="Sign In" textFill="WHITE">
+      <Button fx:id="bttSignIn" layoutX="229.0" layoutY="428.0" mnemonicParsing="false" onAction="#loadLogIn" style="-fx-background-color: blue;" text="Sign In" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="bttCreateAccount" layoutX="210.0" layoutY="428.0" mnemonicParsing="false" onAction="#addUserAccount" style="-fx-background-color: blue;" text="Create Account" textFill="WHITE">
+      <Button fx:id="bttCreateAccount" layoutX="332.0" layoutY="428.0" mnemonicParsing="false" onAction="#addUserAccount" style="-fx-background-color: blue;" text="Create Account" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <ChoiceBox fx:id="choiceBrowser" layoutX="184.0" layoutY="379.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiceBrowser" layoutX="286.0" layoutY="379.0" prefWidth="150.0" />
    </children>
 </Pane>

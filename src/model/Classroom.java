@@ -10,9 +10,10 @@ public class Classroom {
 		userAccounts = new ArrayList<UserAccount>();
 	}
 	
-	public void addUserAcount(String username, String password, int indexGender, String careers, String birthday, String imagePath, String browser) {
-		UserAccount newUser = new UserAccount(username, password, indexGender, careers, birthday, imagePath, browser);
-		userAccounts.add(newUser);
+	public boolean addUserAcount(String username, String password, int indexGender, String careers, String birthday, String imagePath, String browser) {
+		boolean added = false;
+		added = userAccounts.add(new UserAccount(username, password, indexGender, careers, birthday, imagePath, browser));
+		return added;
 	}
 	
 	public ArrayList<UserAccount> getUserAccounts() {
