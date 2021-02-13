@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="mainPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="265.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="loginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="265.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label alignment="TOP_CENTER" layoutX="139.0" layoutY="51.0" nodeOrientation="LEFT_TO_RIGHT" text="Sign in to Classroom" textAlignment="CENTER" underline="true">
          <font>
@@ -25,12 +25,12 @@
          </font>
       </Label>
       <TextField fx:id="txtUsername" layoutX="185.0" layoutY="93.0" prefHeight="25.0" prefWidth="182.0" />
-      <Button fx:id="btSignUp" layoutX="146.0" layoutY="188.0" mnemonicParsing="false" style="-fx-background-color: blue;" text="Sign Up" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="btSignUp" layoutX="146.0" layoutY="188.0" mnemonicParsing="false" onAction="#loadAddUserAccount" style="-fx-background-color: blue;" text="Sign Up" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btLogIn" layoutX="243.0" layoutY="188.0" mnemonicParsing="false" style="-fx-background-color: blue;" text="Log In" textFill="WHITE">
+      <Button fx:id="btLogIn" layoutX="243.0" layoutY="188.0" mnemonicParsing="false" onAction="#loadUserAccountList" style="-fx-background-color: blue;" text="Log In" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

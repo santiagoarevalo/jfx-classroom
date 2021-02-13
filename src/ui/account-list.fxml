@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="listPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="lbUsername" layoutX="407.0" layoutY="38.0" text="User">
          <font>
@@ -24,11 +23,11 @@
       </Button>
       <TableView fx:id="tvUserAccountList" layoutX="32.0" layoutY="79.0" prefHeight="300.0" prefWidth="536.0">
         <columns>
-          <TableColumn prefWidth="105.0" text="Username" />
-          <TableColumn prefWidth="105.0" text="Gender" />
-            <TableColumn prefWidth="105.0" text="Career" />
-            <TableColumn prefWidth="105.0" text="Birthday" />
-            <TableColumn prefWidth="125.0" text="Browser" />
+          <TableColumn fx:id="tcUsername" prefWidth="105.0" text="Username" />
+          <TableColumn fx:id="tcGender" prefWidth="105.0" text="Gender" />
+            <TableColumn fx:id="tcCareer" prefWidth="105.0" text="Career" />
+            <TableColumn fx:id="tcBirthday" prefWidth="105.0" text="Birthday" />
+            <TableColumn fx:id="tcBrowser" prefWidth="125.0" text="Browser" />
         </columns>
       </TableView>
       <ImageView fx:id="imageProfile" fitHeight="31.0" fitWidth="47.0" layoutX="447.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">

@@ -20,7 +20,7 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main-pane.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
 
 		fxmlLoader.setController(classroomGUI);
 		
@@ -31,5 +31,4 @@ public class Main extends Application {
 		primaryStage.setTitle("Classroom");
 		primaryStage.show();
 	}
-
 }
