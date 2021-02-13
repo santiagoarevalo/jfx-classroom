@@ -270,13 +270,13 @@ public class ClassroomGUI {
 	    	
 	    	String careers = "";
 	    	if(checkSoftWare.isSelected() == true) {
-	    		careers = checkSoftWare.getText()+"/n";
+	    		careers = checkSoftWare.getText()+"-";
 	    	}
 	    	if(checkTelematic.isSelected() == true) {
-				careers += checkTelematic.getText()+"/n";
+				careers += checkTelematic.getText()+"-";
 			}
 	    	if(checkIndustrial.isSelected() == true) {
-				careers += checkIndustrial.getText()+"/n";
+				careers += checkIndustrial.getText();
 			}
 	    	String birthdayDate = dateBirthday.getValue().toString();
 	    	String imagePath = txtDirectoryImage.getText();
