@@ -240,6 +240,14 @@ public class ClassroomGUI {
         }
     }
     
+    public void showLogin() throws IOException {
+		FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("login.fxml"));
+		fxmlloader.setController(this);
+		Parent root = fxmlloader.load();
+		mainPanel.getChildren().clear();
+		mainPanel.getChildren().setAll(root);
+	}
+    
     public void addUserAccount(ActionEvent event) throws IOException {
     	if(txtfieldUsername.getText().isEmpty() || txtfieldPassword.getText().isEmpty() || (rbtMale.isSelected() == false && rbtFemale.isSelected() == false && rbtOther.isSelected() == false) || (checkSoftWare.isSelected() == false && checkTelematic.isSelected() == false && checkIndustrial.isSelected() == false) || dateBirthday.getValue().toString().equals(null)) {
     		Alert alert = new Alert(AlertType.ERROR);
