@@ -186,6 +186,8 @@ public class ClassroomGUI {
 		    	alert.setHeaderText(null);
 		    	alert.setContentText("The username or password given are incorrect");
 		    	alert.showAndWait();
+		    	txtUsername.setText(""); 
+    	    	pwPassword.setText("");
 	    	}
 	    	else {
 	    		for(int i=0; i<classroom.getUserAccounts().size(); i++) {
@@ -198,6 +200,8 @@ public class ClassroomGUI {
 	        	    	alert.setHeaderText(null);
 	        	    	alert.setContentText("The username or password given are incorrect");
 	        	    	alert.showAndWait();
+	        	    	txtUsername.setText(""); 
+	        	    	pwPassword.setText("");
 	        		}
 	        	}
 	    	}
@@ -302,6 +306,53 @@ public class ClassroomGUI {
 		    	alert.setContentText("The user account can not be created, NullPointerException");
 		    	alert.showAndWait();
 	    	}
+    	}
+    }
+    
+    @FXML
+    public void exportUserAccounts(ActionEvent event) {
+    	FileChooser fileChooser = new FileChooser();
+    	fileChooser.setTitle("Save Resource File");
+    	File file = fileChooser.showSaveDialog(listPane.getScene().getWindow());
+    	if(file != null) {
+    		try {
+    			classroom.exportUserAccounts(file.getAbsolutePath());
+    			Alert alert = new Alert(AlertType.INFORMATION);
+    		    alert.setTitle("Export User Accounts");
+    		    alert.setHeaderText(null);
+    		    alert.setContentText("The user accounts have been exported");
+    		    alert.showAndWait();
+    		} catch(IOException io) {
+    			Alert alert = new Alert(AlertType.ERROR);
+    		    alert.setTitle("Export User Accounts");
+    		    alert.setHeaderText(null);
+    		    alert.setContentText("The user accounts have not been exported");
+    		    alert.showAndWait();
+    		}
+    	}
+    }
+
+    @FXML
+    public void importUserAccounts(ActionEvent event) {
+    	FileChooser fileChooser = new FileChooser();
+    	fileChooser.setTitle("Open Resource File");
+    	File file = fileChooser.showOpenDialog(listPane.getScene().getWindow());
+    	if(file != null) {
+    		try {
+    			classroom.importUserAccounts(file.getAbsolutePath());
+    			Alert alert = new Alert(AlertType.INFORMATION);
+    		    alert.setTitle("Import User Accounts");
+    		    alert.setHeaderText(null);
+    		    alert.setContentText("The user accounts have been imported");
+    		    alert.showAndWait();
+    		    initializeTableView();
+    		} catch(IOException io) {
+    			Alert alert = new Alert(AlertType.ERROR);
+    		    alert.setTitle("Import User Accounts");
+    		    alert.setHeaderText(null);
+    		    alert.setContentText("The user accounts have not been imported");
+    		    alert.showAndWait();
+    		}
     	}
     }
 }
